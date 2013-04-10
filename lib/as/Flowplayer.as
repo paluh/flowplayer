@@ -212,6 +212,9 @@ public class Flowplayer extends Sprite {
                   stream = new NetStream(conn);
 
                   video.attachNetStream(stream);
+                  // in case of live rtmp streaming this settings fixes our issues
+                  stream.bufferTimeMax = 5;
+                  stream.bufferTime = 3;
                   stream.play(conf.url);
 
                   // metadata
